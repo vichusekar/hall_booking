@@ -15,16 +15,14 @@ function Room() {
     let data = {
       name: e.target.name.value,
       mobile: e.target.mobile.value,
-      address: e.target.address.value,
-      date: e.target.date.value
-
+      address: e.target.address.value
     }
 
     try {
       let res = await axios.post(`${process.env.REACT_APP_API_URL}/room`, data)
       if (res.status === 200) {
         toast.success(res.data.message)
-        navigate('/dashboard')
+        navigate('/')
       }
     } catch (error) {
       console.log(error)
@@ -48,16 +46,11 @@ function Room() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicAddress">
-          <Form.Label>Address</Form.Label>
+          <Form.Label >Address</Form.Label>
           <Form.Control type="text" placeholder="Enter address" name='address' />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicDate">
-          <Form.Label>Date</Form.Label>
-          <Form.Control type="date" placeholder="Choose date" name='date' />
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" style={{ borderRadius: '10px', marginLeft: '110px', width: '100px', cursor: 'pointer' }}>
           Submit
         </Button>
       </Form>

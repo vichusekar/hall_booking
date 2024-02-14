@@ -51,7 +51,7 @@ function SignUp() {
         <Form.Control type="password" placeholder="Password" name='password'/>
       </Form.Group>
       
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" style={{ borderRadius: '10px', marginLeft: '110px', width: '100px', cursor: 'pointer' }}>
         Submit
       </Button>
     </Form>
