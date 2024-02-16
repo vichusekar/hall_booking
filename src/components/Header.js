@@ -3,25 +3,51 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useNavigate } from 'react-router-dom';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function Header() {
 
+    let user = JSON.parse(localStorage.getItem("user-info"))
     let navigate = useNavigate()
-  return <>
-   <Navbar bg="light" data-bs-theme="light">
+
+    function Logout(){
+        localStorage.clear()
+        navigate('/')
+    }
+    return <>
+        <Navbar bg="light" data-bs-theme="light">
             <Container>
-                <Navbar.Brand href="#home">Home</Navbar.Brand>
+                <Navbar.Brand onClick={() => navigate('/')}>Home</Navbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link onClick={() => navigate('/dashboard')}>Dashboard</Nav.Link>
                 </Nav>
+                <Nav>
+                    {
+                        localStorage.getItem("user-info") ?
+                            <>
+                                <Nav>
+                                    <NavDropdown title={user && user.name} >
+                                        <NavDropdown.Item onClick={Logout}>
+                                            LogOut
+                                        </NavDropdown.Item>
+                                    </NavDropdown>
+                                </Nav>
+                            </>
+                            :
+                            <>
+                                <Nav.Link onClick={()=>navigate('/sign-up')} >SignUp</Nav.Link>
+                            </>
+                        // :
+                        // <><Nav.Link >
+                        //     Dank memes
+                        // </Nav.Link>}</>
+
+                    }
+                </Nav>
+
             </Container>
-            <Nav>
-                <Nav.Link onClick={() => navigate('/sign-in')}>SignIn</Nav.Link>
-                <Nav.Link eventKey={2} onClick={() => navigate('/sign-up')}>SignUp
-                </Nav.Link>
-            </Nav>
-        </Navbar>
-  </>
+
+        </Navbar >
+    </>
 }
 
 export default Header

@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Header from './Header';
 
 
 function Room() {
@@ -14,6 +15,7 @@ function Room() {
 
     let data = {
       name: e.target.name.value,
+      email: e.target.email.value,
       mobile: e.target.mobile.value,
       address: e.target.address.value
     }
@@ -30,30 +32,38 @@ function Room() {
   }
   return <>
 
-<h2 className='booking-title'>Enter Details</h2>
-    <div className='room-booking'>
-      
-      <Form onSubmit={handleBook}>
+    <div className='details-main'>
+    <Header />
+      <h2 className='booking-title'>Enter Details</h2>
+      <div className='room-booking'>
 
-        <Form.Group className="mb-3" controlId="formBasicName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter name" name='name' />
-        </Form.Group>
+        <Form onSubmit={handleBook}>
 
-        <Form.Group className="mb-3" controlId="formBasicMobile">
-          <Form.Label>Mobile</Form.Label>
-          <Form.Control type="text" placeholder="Enter mobile" name='mobile' />
-        </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicName">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter name" name='name' />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicAddress">
-          <Form.Label >Address</Form.Label>
-          <Form.Control type="text" placeholder="Enter address" name='address' />
-        </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicName">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" name='email' />
+          </Form.Group>
 
-        <Button variant="primary" type="submit" style={{ borderRadius: '10px', marginLeft: '110px', width: '100px', cursor: 'pointer' }}>
-          Submit
-        </Button>
-      </Form>
+          <Form.Group className="mb-3" controlId="formBasicMobile">
+            <Form.Label>Mobile</Form.Label>
+            <Form.Control type="text" placeholder="Enter mobile" name='mobile' />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicAddress">
+            <Form.Label >Address</Form.Label>
+            <Form.Control type="text" placeholder="Enter address" name='address' />
+          </Form.Group>
+
+          <Button variant="primary" type="submit" style={{ borderRadius: '10px', marginLeft: '110px', width: '100px', cursor: 'pointer' }}>
+            Submit
+          </Button>
+        </Form>
+      </div>
     </div>
 
   </>

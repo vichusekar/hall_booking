@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useNavigate, useParams } from 'react-router-dom';
+import Header from './Header';
 
 function ResetPassword() {
   let params = useParams()
@@ -14,7 +15,6 @@ function ResetPassword() {
     e.preventDefault()
 
     let data = {
-      email: e.target.email.value,
       password: e.target.password.value
     }
 
@@ -23,7 +23,7 @@ function ResetPassword() {
 
       if (res.status === 200) {
         toast.success(res.data.message)
-        navigate('/main')
+        navigate('/sign-in')
       }
 
     } catch (error) {
@@ -32,6 +32,8 @@ function ResetPassword() {
   }
 
   return <>
+    <div className='reset-password-main'>
+      <Header />
     <div className='reset-title'>
       <h2>Reset Password</h2>
     </div>
@@ -39,10 +41,10 @@ function ResetPassword() {
       
       <Form onSubmit={handleresetpassword}>
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        {/* <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
           <Form.Control type="email" placeholder="Enter email" name='email' />
-        </Form.Group>
+        </Form.Group> */}
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>New Password</Form.Label>
@@ -53,6 +55,8 @@ function ResetPassword() {
 
       </Form>
     </div>
+    </div>
+
   </>
 }
 

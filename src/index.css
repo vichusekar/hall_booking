@@ -20,30 +20,53 @@ code {
   border: 1px solid blue;
   border-radius: 10px;
   padding: 15px;
+  background-color: aliceblue;
+}
+
+.signin-toggle {
+  margin-left: 120px;
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
+.signup-main{
+  height: 100vh;
+  width: 100%;
+}
+
+.signin-main{
+  height: 100vh;
+  width: 100%;
+  background-color: brown;
 }
 
 .signup-title{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
+  padding-top: 20px;
+  
 }
 
 .signin-title{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
+  /* align-items: center; */
+  padding-top: 40px;
+  margin-left: 600px;
+  color: white;
 }
 
 .signin-wrapper{
   margin-top: 50px;
-  margin-left: 500px;
+  margin-left: 480px;
   margin-right: 450px;
   width: 370px;
   border: 1px solid orange;
   border-radius: 10px;
   padding: 15px;
+  background-color: aliceblue;
 }
 
 .booking-card{
@@ -73,20 +96,21 @@ code {
   margin-left: 30px;
 }
 .room-booking{
-  margin-top: 70px;
+  margin-top: 60px;
   margin-left: 500px;
   margin-right: 450px;
   width: 370px;
   border: 1px solid orange;
   border-radius: 10px;
   padding: 15px;
+  background-color: aliceblue;
 }
 
 .booking-title{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  padding-top: 30px;
 }
 
 
@@ -95,7 +119,11 @@ code {
   flex-direction: row;
 }
 
-
+.forgot-password-main{
+  height: 100vh;
+  width: 100%;
+  background-color: yellowgreen;
+}
 .f-password{
   display: flex;
   flex-direction: column;
@@ -106,19 +134,77 @@ code {
 }
 
 .fpassword-wrapper{
-  margin-top: 150px;
+  /* margin-top: 120px; */
   margin-left: 500px;
   margin-right: 450px;
   width: 370px;
   border: 1px solid orange;
   border-radius: 10px;
   padding: 15px;
-  margin-top:90px;
+  margin-top:30px;
+  background-color: aliceblue;
 }
 
 .forgot-title{
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 80px;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  margin-top: 130px;
+  justify-content: center;
+  width: 100%;
+  margin-left: 30px;
+}
+
+.reset-title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+
+
+.r-password{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
+.password-wrapper{
   margin-top: 50px;
+  margin-left: 500px;
+  margin-right: 450px;
+  width: 370px;
+  border: 1px solid orange;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: aliceblue;
+}
+
+.reset-password-main{
+  height: 100vh;
+  width: 100%;
+  background-color: aqua;
+}
+
+.details-main{
+  height: 100vh;
+  width: 100%;
+  /* background-color: tomato; */
+}
+
+.container > span{
+  cursor: pointer;
+}
+
+.error{
+  color: red;
 }
