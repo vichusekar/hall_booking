@@ -121,7 +121,7 @@ router.post('/forgot-password/:id', async (req, res) => {
 
 router.post('/reset-password/:id', async (req, res) => {
     try {
-        let user = await UserModel.findOne({ email: req.body.email })
+        let user = await UserModel.findById({ _id: req.params.id })
         if (user) {
 
             user.password = await hashPassword(req.body.password)
