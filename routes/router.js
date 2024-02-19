@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const { dbUrl } = require('../config/dbConfig')
 const RoomModel = require('../models/Room')
 const { hashPassword, comparePassword, createToken } = require('../authentication/Auth')
+const nodemailer = require('nodemailer')
 
 mongoose.connect(dbUrl)
 
@@ -76,5 +77,66 @@ router.get('/booked/:id', async (req,res) => {
         res.status(500).send({message:'Internal Server Error',error: error?.message})
     }
 })
+
+router.post('/forgot-password/:id', async (req, res) => {
+    try {
+        const oldUser = await UserModel.findOne({ email: req.body.email })
+        if (oldUser) {
+            const passwordLink = `https://incomparable-brigadeiros-321042.netlify.app/reset-password/${oldUser._id}`
+
+            var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'rajasekarvignesh093@gmail.com',
+                    pass: 'xacc elgo llit itnq'
+                }
+            });
+
+            var mailOptions = {
+                from: 'vigneshmsho093@gmail.com',
+                to: req.body.email,
+                subject: 'Reset your password ',
+                text: passwordLink,
+            };
+
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+            res.status(200).send({ message: 'Email Sent Successfully' })
+
+        }
+
+        else {
+            res.status(400).send({ message: `User with ${req.body.email} doesn't exists`, error: error?.message })
+        }
+    } catch (error) {
+        res.status(500).send({ message: 'Internal Server Error', error: error?.message })
+
+    }
+})
+
+router.post('/reset-password/:id', async (req, res) => {
+    try {
+        let user = await UserModel.findOne({ email: req.body.email })
+        if (user) {
+
+            user.password = await hashPassword(req.body.password)
+            let token = await createToken(user)
+            user.save()
+            res.status(200).send({ message: 'Password Changed Successfuly', token })
+
+        }
+        else {
+            res.status(400).send({ message: 'user not exists' })
+        }
+    } catch (error) {
+        res.status(500).send({ message: 'Internal Server Error', error: error?.message })
+    }
+})
+
 
 module.exports = router
