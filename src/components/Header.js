@@ -6,8 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function Header() {
-
-    let user = JSON.parse(localStorage.getItem("user-info"))
     let navigate = useNavigate()
 
     function Logout(){
@@ -25,22 +23,16 @@ function Header() {
                         localStorage.getItem("user-info") ?
                             <>
                                 <Nav>
-                                    <NavDropdown title={user && user.name} >
-                                        <NavDropdown.Item onClick={Logout}>
+                                        <Nav.Link onClick={Logout}>
                                             LogOut
-                                        </NavDropdown.Item>
-                                    </NavDropdown>
+                                        </Nav.Link>
                                 </Nav>
                             </>
                             :
                             <>
                                 <Nav.Link onClick={()=>navigate('/sign-up')} >SignUp</Nav.Link>
                             </>
-                        // :
-                        // <><Nav.Link >
-                        //     Dank memes
-                        // </Nav.Link>}</>
-
+                       
                     }
                 </Nav>
 
