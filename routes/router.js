@@ -18,7 +18,7 @@ router.post('/sign-up', async (req,res) => {
             req.body.password = await hashPassword(req.body.password)
             let newUser = await UserModel.create(req.body)
             newUser.save()
-            res.status(200).send({message: 'User Created Successfully'})
+            res.status(200).send({message: 'SignUp Successfully'})
         }
         else
         {
