@@ -28,6 +28,7 @@ function ForgotPassword() {
             }
 
         } catch (error) {
+            toast.error(error.response.data.error || error.response.data.message)
             console.log(error)
         }
 
