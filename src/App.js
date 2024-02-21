@@ -47,6 +47,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home data={data} setData={setData} />} />
+        <Route path='/' element={<Home />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/sign-in' element={<SignIn />} />
         <Route path='/booking' element={<Room />} />
